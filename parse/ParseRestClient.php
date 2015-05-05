@@ -92,7 +92,10 @@ class ParseRestClient{
 			$urlParams = http_build_query($args['urlParams'], '', '&');
     		$url = $url.'?'.$urlParams;
 		}
-
+		
+		//telling php to ignore SSL certificate warning
+        	curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
+		
 		curl_setopt($c, CURLOPT_URL, $url);
 
 		$response = curl_exec($c);
